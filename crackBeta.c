@@ -12,36 +12,122 @@ int main(int argc, string argv[])
     //check for a command-line argument
     if (argc == 2)
     {
-        //set hashedPassword equal to the provided plaintext password
-        //TODO work on string names
-        //this is not what the problem actually asks for, just for testing purposes
-        string givenPlaintextPassword = argv[1];
+        //set givenHashedPassword equal to the provided hashed password
+        string givenHashedPassword = argv[1];
 
-        //print the plaintext password provided by the user
-        printf("Password: %s\n", givenPlaintextPassword);
-        printf("\n");
+        //printf("%s\n",crypt("B","50"));
 
-        //TODO testing for B, remove later
-        printf("%s\n",crypt("B","50"));
-        printf("\n");
-
-        string guessedPlaintextPassword = "A";
-        string hashedPassword = crypt(guessedPlaintextPassword,"50");
-
-        for (int i = 65; i < 91; i++)
+        //tests for upper and lower case with only some inefficiency
+        //is this the best solution????
+        for (int i = 65; i < 123; i++)
         {
-            if (strcmp(crypt(givenPlaintextPassword,"50"), hashedPassword) != 0)
+            //start with the assumption that there is only one character
+            //then test for two, three, and finally four characters
+            char s[5];
+            s[0] = i;
+            s[1] = 0;
+            s[2] = 0;
+            s[3] = 0;
+            s[4] = '\0';
+
+            if (strcmp(crypt(s,"50"), givenHashedPassword) == 0)
             {
-                givenPlaintextPassword = givenPlaintextPassword + 1;
+                //TODO replace and rename s to givenPlaintextPassword instead???
+                //string givenPlaintextPassword = ;
+
+                //print the plaintext password provided by the user
+                printf("Password: %s\n", s);
+
+                return 0;
+            }
+
+        }
+
+        for (int i = 65; i < 123; i++)
+        {
+            for (int j = 65; j < 123; j++)
+            {
+                char s[5];
+                s[0] = i;
+                s[1] = j;
+                s[2] = 0;
+                s[3] = 0;
+                s[4] = '\0';
+
+                if (strcmp(crypt(s,"50"), givenHashedPassword) == 0)
+                {
+                    //TODO replace and rename s to givenPlaintextPassword instead???
+                    //string givenPlaintextPassword = ;
+
+                    //print the plaintext password provided by the user
+                    printf("Password: %s\n", s);
+
+                    return 0;
+                }
+
+            }
+
+        }
+
+        for (int i = 65; i < 123; i++)
+        {
+            for (int j = 65; j < 123; j++)
+            {
+                for (int k = 65; k < 123; k++)
+                {
+                    char s[5];
+                    s[0] = i;
+                    s[1] = j;
+                    s[2] = k;
+                    s[3] = 0;
+                    s[4] = '\0';
+
+                    if (strcmp(crypt(s,"50"), givenHashedPassword) == 0)
+                    {
+                        //TODO replace and rename s to givenPlaintextPassword instead???
+                        //string givenPlaintextPassword = ;
+
+                        //print the plaintext password provided by the user
+                        printf("Password: %s\n", s);
+
+                        return 0;
+                    }
+                }
             }
         }
 
-        //TODO need to convert from hash to plaintext, this currently prints the hash of the password
-        printf("Original password is: %s\n", givenPlaintextPassword);
-        return 0;
+        for (int i = 65; i < 123; i++)
+        {
+            for (int j = 65; j < 123; j++)
+            {
+                for (int k = 65; k < 123; k++)
+                {
+                    for (int l = 65; l < 123; l++)
+                    {
+                        char s[5];
+                        s[0] = i;
+                        s[1] = j;
+                        s[2] = k;
+                        s[3] = l;
+                        s[4] = '\0';
 
-        //TODO shouldn't there be a failure state in here somewhere?
+                        if (strcmp(crypt(s,"50"), givenHashedPassword) == 0)
+                        {
+                            //TODO replace and rename s to givenPlaintextPassword instead???
+                            //string givenPlaintextPassword = ;
+
+                            //print the plaintext password provided by the user
+                            printf("Password: %s\n", s);
+
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
+
+
 
     else
     {
