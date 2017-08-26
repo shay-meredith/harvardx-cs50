@@ -1,0 +1,56 @@
+#define _XOPEN_SOURCE
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <crypt.h>
+
+int main(int argc, string argv[])
+{
+    //check for a command-line argument
+    if (argc == 2)
+    {
+        //set givenHashedPassword equal to the provided hashed password
+        string givenHashedPassword = argv[1];
+
+        //printf("%s\n",crypt("B","50"));
+
+        for (int i = 65; i < 91; i++)
+        {
+            char c = i;
+            char s[2];
+            s[0] = c;
+            s[1] = '\0';
+
+            if (strcmp(crypt(s,"50"), givenHashedPassword) == 0)
+            {
+                //TODO replace and rename s to givenPlaintextPassword instead???
+                //string givenPlaintextPassword = ;
+
+                //print the plaintext password provided by the user
+                printf("Password: %c\n", i);
+
+                return 0;
+            }
+
+        }
+
+    }
+
+    else
+    {
+        printf("Error\n");
+        return 1;
+    }
+}
+
+//TODO
+//use a for loop to iterate through up to a four character
+//password key with the ASCII values for a–zA–Z0–9./ and
+//using a salt of "50"
+// use 50YHuxoCN9Jkc for testing
+
+//look for a command-line argument of the hashes provided
+//run the for loop until the result matches the hash provided
